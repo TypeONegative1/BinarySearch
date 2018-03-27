@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 
 
@@ -14,39 +14,30 @@ namespace ConsoleApplication
 
         {
             //код поиска значения value в массиве array
-            if (array == null)
-            {
-                return 0;
-            }
-            if ((array.Length == 0) || (value < array[0]) || (value > array[array.Length - 1]))
-            {
-                return 0;
-            }
             int first = 0;
-            int last = array.Length;
+            int last = array.Length-1;
             while (first < last)
             {
                 int middle = (first + last) / 2;
 
-                if (value < array[middle])
+                if (array[middle]<value)
                 {
-                    last = middle;
+                    first = middle+1;
                 }
 
                 else
                 {
-                    first = middle + 1;
+                    last = middle;
                 }
             }
 
-            if (array[last] == value)
+            if (last < 0 || array[first] != value)
             {
-                return last;
+                return -1;
             }
-
             else
-            {
-                return 0;
+            { 
+                return first;
             }
         }
 
